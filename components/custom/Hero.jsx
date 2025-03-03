@@ -12,7 +12,7 @@ function Hero() {
   const [userInput,setUserInput]=useState();
   const {message,setMessage}=useContext(MessagesContext);
   const {userDetail,setUserDetail}=useContext(UserDetailContext);
-  const {openDialog,setOpenDialog}=useState(false);
+  const {openDialog,setOpenDialog}=useState(true);
   const onGenerate=(input)=>{
     if(!userDetail?.name){
       setOpenDialog(true);
