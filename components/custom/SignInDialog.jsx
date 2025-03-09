@@ -14,6 +14,8 @@ import { UserDetailContext } from '@/context/UserDetailContext'
 import { useContext } from 'react'
 import { useGoogleLogin } from '@react-oauth/google'
 import { useMutation } from 'convex/react'
+import { api } from '@/convex/_generated/api'
+import { v4 as uuid } from 'uuid'
 
 function SignInDialog({ openDialog, closeDialog }) {
     const { userDetail, setUserDetail } = useContext(UserDetailContext);
