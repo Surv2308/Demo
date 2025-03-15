@@ -1,5 +1,5 @@
 import { v } from "convex/values";
-import { mutation } from "./_generated/server";
+import { mutation,query } from "./_generated/server";
 
 export const CreateWokspace=mutation({
     args:{
@@ -37,6 +37,7 @@ export const UpdateMessage=mutation({
         return result;
     }
 })
+
 export const UpdateFiles=mutation({
     args:{
         workspaceId:v.id('workspace'),
