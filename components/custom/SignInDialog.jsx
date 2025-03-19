@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import {
@@ -18,15 +19,15 @@ import { api } from '@/convex/_generated/api'
 import { v4 as uuid } from 'uuid'
 
 function SignInDialog({ openDialog, closeDialog }) {
-    const { userDetail, setUserDetail } = useContext(UserDetailContext);
-    const CreateUser = useMutation(api.user.CreateUser);
+    // const { userDetail, setUserDetail } = useContext(UserDetailContext);
+    const CreateUser = useMutation(api.users.CreateUser);
 
     const googleLogin = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
             console.log(tokenResponse);
             const userInfo = await axios.get(
                 'https://www.googleapis.com/oauth2/v3/userinfo',
-                { headers: { Authorization: 'Bearer' + tokenResponce?.access_token } },
+                { headers: { Authorization: 'Bearer' + tokenResponse?.access_token } },
             );
             console.log(userInfo);
             const user = userInfo.data;
@@ -41,7 +42,7 @@ function SignInDialog({ openDialog, closeDialog }) {
                 localStorage.setItem('user',JSON.stringify(user));//userInfo.data
             }
 
-            setUserDetail(userInfo?.data);
+            // setUserDetail(userInfo?.data);
             //Save this inside out Database
             closeDialog(false);
         },

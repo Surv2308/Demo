@@ -11,10 +11,9 @@ import { useMutation } from 'convex/react'
 import { api } from '@/convex/_generated/api'
 import { useRouter } from 'next/navigation'
 
-
 function Hero() {
   const [userInput, setUserInput] = useState();
-  const { message, setMessage } = useContext(MessagesContext);
+  const { messages, setMessages } = useContext(MessagesContext);
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
   const [openDialog, setOpenDialog] = useState(true);
   const CreateWorkspace = useMutation(api.workspace.CreateWorkspace);
@@ -24,11 +23,11 @@ function Hero() {
       setOpenDialog(true);
       return;
     }
-    const msg = ({
+    const msg = {
       role: 'user',
       content: input
-    });
-    setMessage(msg);
+    };
+    setMessages(msg);
 
     const workspaceId = await CreateWorkspace({
       user: userDetail._id,

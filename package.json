@@ -19,7 +19,7 @@
     "axios": "^1.8.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "convex": "^1.19.3",
+    "convex": "^1.20.0",
     "dedent": "^1.5.3",
     "lucide-react": "^0.475.0",
     "next": "15.1.6",
@@ -30,7 +30,8 @@
     "tailwind-merge": "^3.0.1",
     "tailwind-scrollbar-hide": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "uuid4": "^2.0.3"
   },
   "devDependencies": {
     "postcss": "^8",

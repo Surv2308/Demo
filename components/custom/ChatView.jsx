@@ -1,6 +1,6 @@
 "use client"
 import { useParams } from 'next/navigation'
-import { useConvex } from 'convex-react'
+import { useConvex } from 'convex/react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { api } from '@/convex/_generated/api'
@@ -14,6 +14,7 @@ import Lookup from '@/data/Lookup'
 import { ArrowRight, Link } from 'lucide-react'
 import { useMutation } from 'convex/react'
 import ReactMarkdown from 'react-markdown'
+import Prompt from '@/data/Prompt'
 
 function ChatView() {
   const { id } = useParams();
@@ -34,12 +35,13 @@ function ChatView() {
     const result = await convex.query(api.workspace.GetWorkspace, {
       workspaceId: id
     });
-    setMessages(result?.messages);
+    setMessages(result?.message);
     console.log(result);
   }
 
   useEffect(() => {
     if (messages?.length > 0) {
+      console.log(messages);
       const role = messages[messages.length - 1]?.role;
       if (role == 'user') {
         GetAiResponce();
@@ -66,7 +68,7 @@ function ChatView() {
     setLoading(false);
   }
 
-  const onGenerate = (Input) => {
+  const onGenerate = (input) => {
     setMessages(prev=>[...prev,{
       role:'user',
       content:input

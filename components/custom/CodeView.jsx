@@ -7,7 +7,6 @@ import {
   SandpackPreview,
   SandpackFileExplorer,
 } from "@codesandbox/sandpack-react";
-import { Prompt } from 'next/font/google';
 import { useMutation } from 'convex/react';
 import { api } from '@/convex/_generated/api';
 import { useParams } from 'next/navigation';
@@ -16,6 +15,10 @@ import { useContext } from 'react';
 import { MessagesContext } from '@/context/MessagesContext';
 import axios from 'axios';
 import { useEffect } from 'react';
+import { Loader2Icon } from 'lucide-react';
+import { useConvex } from 'convex/react';
+import Prompt from '@/data/Prompt'
+
 
   function CodeView() {
     const { id } = useParams();
@@ -27,6 +30,7 @@ import { useEffect } from 'react';
     const[loading,setLoading]=useState(false);
 
     useEffect(() => {
+      console.log(id);
       id&&GetFiles();
     },[id])
     const GetFiles=async()=>{
